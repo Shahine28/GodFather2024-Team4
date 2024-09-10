@@ -11,12 +11,7 @@ public class PlayerAttack : MonoBehaviour
     private float recharge;
 
     void StartAttack()
-    {
-        _coll.radius = 1.5f;
-        _coll.isTrigger = true;
-        _animator.SetBool("Attacking", true);
-        recharge = 0;
-        _animator.SetBool("Attacking", false);
+    {      
         StartCoroutine(AttackTime());
         StartCoroutine(_lifeScript.HitStun());
     }
@@ -46,8 +41,15 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator AttackTime()
     {
+        _coll.radius = 1f;
+        _coll.isTrigger = true;
+        _animator.SetBool("Attacking", true);
+
         yield return new WaitForSeconds(.5f);
+
+        _animator.SetBool("Attacking", false);  
         _coll.radius = 0.5f;
         _coll.isTrigger = false;
+        recharge = 0;
     }
 }
