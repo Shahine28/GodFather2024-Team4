@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -7,6 +8,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _health = 100;
+    [SerializeField] private WaveManager _waveManager;
     
     private GameObject _player;
     [Header("Movement")]
@@ -36,22 +38,24 @@ public class Enemy : MonoBehaviour
         Damage(_damage);
     }
 
-    public void SetEnemy(float health,float speed, float damage, float attackSpeed, GameObject player)
+    public void SetEnemy(float health,float speed, float damage, float attackSpeed, GameObject player, WaveManager waveManager)
     {
         _health = health;
         _speed = speed;
         _damage = damage;
         _attackSpeed = attackSpeed;
         _player = player;
+        _waveManager = waveManager;
     }
 
-    public void SetEnemy(float health, float speed, float damage, float attackSpeed, GameObject player, float RotationSpeed, float attackRange)
+    public void SetEnemy(float health, float speed, float damage, float attackSpeed, GameObject player, WaveManager waveManager, float RotationSpeed, float attackRange)
     {
         _health = health;
         _speed = speed;
         _damage = damage;
         _attackSpeed = attackSpeed;
         _player = player;
+        _waveManager = waveManager;
         _rotationSpeed = RotationSpeed;
         _attackRange = attackRange;
     }
@@ -85,11 +89,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    [Button]
+    public void TakeDamage()
+    { TakeDamage(10); }
     public void TakeDamage(float damage)
     {
         _health -= Mathf.Abs(damage);
-        if (_health <= 0) Destroy(gameObject);
+        if (_health <= 0)
+        {
+            _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
+            Destroy(gameObject);
+        }
     }
 
     private void Damage(float damage)
