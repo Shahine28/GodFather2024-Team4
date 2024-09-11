@@ -11,10 +11,13 @@ public class PlayerLife : MonoBehaviour
 
     public void TakeDamage()
     {
-        _currentLife -= 1;
-        _invincible = true;
-        StartCoroutine(HitStun());
-
+        if (!_invincible)
+        {
+            _currentLife -= 1;
+            _invincible = true;
+            StartCoroutine(HitStun());
+        }
+        
         if (_currentLife == 0 )
         {
             GameOver();
