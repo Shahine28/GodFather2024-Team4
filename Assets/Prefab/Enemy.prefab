@@ -429,7 +429,7 @@ MonoBehaviour:
   _rb: {fileID: 3148122743504311339}
   _speed: 5
   _rotationSpeed: 5
-  _stopDistance: 0.5
+  _stopDistance: 0.23
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8

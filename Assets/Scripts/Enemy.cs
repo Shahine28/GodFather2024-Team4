@@ -139,8 +139,8 @@ public class Enemy : MonoBehaviour
         _attackTimer -= Time.deltaTime;
         if (_player != null && _IsInAttackRange && _attackTimer <= 0)
         {
-            //PlayerLife player = _player.GetComponent<PlayerLife>();
-            //player.TakeDamage(damage);
+            PlayerLife player = _player.GetComponent<PlayerLife>();
+            player.TakeDamage(damage);
             Debug.Log("Player took " + damage + " damage");
             _attackTimer = _attackSpeed;
             
