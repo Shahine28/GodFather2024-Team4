@@ -435,7 +435,7 @@ MonoBehaviour:
     m_Bits: 8
   _damage: 10
   _attackSpeed: 1
-  _attackRange: 1
+  _attackRange: 2
   _IsInAttackRange: 0
   _health: 100
   _healthBar: {fileID: 8198887200383810211}

@@ -1,30 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private float _maxLife;
     [SerializeField] private float _currentLife;
+    public float CurrentLife => _currentLife;
+    [SerializeField] private Slider _healthBar;
     //private bool _invincible;
     void Start()
     {
         _currentLife = _maxLife;
+        _healthBar.maxValue = _maxLife;
+        _healthBar.value = _maxLife;
     }
     public void TakeDamage(float Damage)
     {
         _currentLife -= Mathf.Abs(Damage);
+        UpdateHealthBar();
         if (_currentLife <= 0)
         {
             GameOver();
         }
-
-        //if (!_invincible)
-        //{
-
-        //_invincible = true;
-        //StartCoroutine(HitStun());
-        //}
     }
 
     public void Heal(float Heal)
@@ -34,6 +33,12 @@ public class PlayerLife : MonoBehaviour
         {
             _currentLife = _maxLife;
         }
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
+    {
+        _healthBar.value = _currentLife;
     }
 
     private void GameOver()
@@ -44,37 +49,10 @@ public class PlayerLife : MonoBehaviour
         Application.Quit();
     }
 
-    void Start()
-    {
-        _currentLife = _maxLife;
-        _healthBarScript = FindObjectOfType<HealthBar>();
-    }
-
 
     //public IEnumerator HitStun()
     //{
     //    yield return new WaitForSeconds(.5f);
     //    _invincible = false;
     //}
-    public IEnumerator HitStun()
-    {
-        yield return new WaitForSeconds(.5f);
-        _invincible = false;
-    }
-
-    public IEnumerator Flash()
-    {
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.clear;
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.white;
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.clear;
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.white;
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.clear;
-        yield return new WaitForSeconds(.10f);
-        _skin.color = Color.white;
-    }
 }

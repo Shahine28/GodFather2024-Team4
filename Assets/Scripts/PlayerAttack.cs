@@ -9,11 +9,11 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     //[SerializeField] private Animator _animator;
+    [Header("Attack")]
     [SerializeField] private PolygonCollider2D _coll;
     [SerializeField] private float _cooldownTime;
-    private float _reloadTime;  
-    private Vector2 _lookInput;
-    [SerializeField] private Transform _playerTransform;
+    private float _reloadTime;
+    [SerializeField] private float _damage;
     [SerializeField] private ContactFilter2D _contactFilter;
     [SerializeField] private List<Collider2D> _collidersInContact = new List<Collider2D>();
 
@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 5f; // Vitesse de rotation
     [SerializeField] private float _rotationRadius = 2f; // Rayon de rotation
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private Transform _playerTransform;
 
     private Vector2 lookInput; // Stocke l'input de la souris ou du joystick
     private float currentAngle = 0f; // Angle actuel pour la rotation
@@ -80,8 +81,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (collider.CompareTag("Enemy"))
                 {
-                    Debug.Log("Hit");
-                    collider.GetComponent<Enemy>().TakeDamage();
+                    collider.GetComponent<Enemy>().TakeDamage(_damage);
                 }
             }
             _reloadTime = 0;
