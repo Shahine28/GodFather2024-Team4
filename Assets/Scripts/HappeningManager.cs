@@ -6,10 +6,18 @@ using UnityEngine.InputSystem;
 
 public class HappeningManager : MonoBehaviour
 {
-
+    [Header("Input")]
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private GameObject _player;
+
+    [Header("Player")]
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerAttack _playerAttack;
+    [SerializeField] private PlayerLife _playerLife;
+
+    [Header("Happenings")]
     [SerializeField] private GameObject _waveManager;
+    [SerializeField] private Vector3 _movementAttackLife;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +30,53 @@ public class HappeningManager : MonoBehaviour
         
     }
 
-    public void Buff(InputAction.CallbackContext context)
+    public void Bombe(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Buff");
+            Debug.Log("Bombe");
         }
     }
-    public void Nerf(InputAction.CallbackContext context)
+    public void Frenzie(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Nerf");
+            Debug.Log("Frenzie");
         }
     }
+    public void Multiplier(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Multiplier");
+        }
+    }
+
+    public void Stats(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Stats");
+        }
+    }
+
+    public void Binding(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Binding");
+        }
+    }
+    public void Vision(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Vision");
+        }
+    }
+
+
+
+
+
 }
