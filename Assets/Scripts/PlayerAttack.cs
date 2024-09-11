@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 {
     //[SerializeField] private Animator _animator;
     [Header("Attack")]
-    [SerializeField] private PolygonCollider2D _coll;
+    [SerializeField] private CircleCollider2D _coll;
     [SerializeField] private float _cooldownTime;
     private float _reloadTime;
     [SerializeField] private float _damage;
