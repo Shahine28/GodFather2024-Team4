@@ -16,6 +16,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEnemies = 1f;
     [SerializeField] private float _enemySize = 1f;
+    [SerializeField] private Vector2 _randomRange;
+
 
     [Header("Enemy Settings")]
     [SerializeField] private float _baseHealth = 100f;
@@ -82,7 +84,7 @@ public class WaveManager : MonoBehaviour
     {
         Camera cam = Camera.GetComponent<Camera>();
         Vector3 cameraPosition = cam.transform.position;
-        float spawnDistance = Random.Range(5f, 20f);
+        float spawnDistance = Random.Range(_randomRange.x, _randomRange.y);
         Vector3 spawnDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnPosition = cameraPosition + spawnDirection * spawnDistance;
         spawnPosition.z = 0;
