@@ -7,7 +7,7 @@ public class StartMenuController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene"); // PLACEHOLDER SCENE NAME!!
+        SceneManager.LoadScene("DevEnemy"); // PLACEHOLDER SCENE NAME!!
     }
 
     public void QuitGame()
