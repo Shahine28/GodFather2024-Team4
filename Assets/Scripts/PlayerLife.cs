@@ -44,6 +44,11 @@ public class PlayerLife : MonoBehaviour
         Application.Quit();
     }
 
+    void Start()
+    {
+        _currentLife = _maxLife;
+        _healthBarScript = FindObjectOfType<HealthBar>();
+    }
 
 
     //public IEnumerator HitStun()
@@ -51,4 +56,25 @@ public class PlayerLife : MonoBehaviour
     //    yield return new WaitForSeconds(.5f);
     //    _invincible = false;
     //}
+    public IEnumerator HitStun()
+    {
+        yield return new WaitForSeconds(.5f);
+        _invincible = false;
+    }
+
+    public IEnumerator Flash()
+    {
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.clear;
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.white;
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.clear;
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.white;
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.clear;
+        yield return new WaitForSeconds(.10f);
+        _skin.color = Color.white;
+    }
 }
