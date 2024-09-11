@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -30,6 +30,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float _damagePerWave = 1f;
     [SerializeField] private float _baseAttackSpeed = 1f;
     [SerializeField] private float _attackSpeedPerWave = 0.1f;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI _waveText;
+    private int _catsKilled = 0;
+    [SerializeField] private int _scoreMuktiplier = 1;
 
     private List<GameObject> _enemies = new List<GameObject>();
 
@@ -96,6 +101,8 @@ public class WaveManager : MonoBehaviour
     public IEnumerator RemoveEnemy(GameObject enemy)
     {
         _enemies.Remove(enemy);
+        _catsKilled += 1 * _scoreMuktiplier;
+        _waveText.text = _catsKilled.ToString();
         if (_enemies.Count == 0)
         {
             Debug.Log("Wave " + _waveNumber + " cleared!");
