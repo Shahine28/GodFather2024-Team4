@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WaveManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int _enemiesPerWaveIncrement = 1;
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _timeBetweenEnemies = 1f;
+    [SerializeField] private float _enemySize = 1f;
 
     [Header("Enemy Settings")]
     [SerializeField] private float _baseHealth = 100f;
@@ -48,10 +50,12 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < _enemiesPerWave; i++)
         {
             Vector3 spawnPosition = GetSpawnPosition();
-            //while (IsPositionOccupied(spawnPosition))
-            //{
-            //    spawnPosition = GetSpawnPosition();
-            //}
+            int occurence = 0;
+            while (!IsPositionValid(spawnPosition) && occurence < _enemiesPerWave * 6)
+            {
+                occurence++;
+                spawnPosition = GetSpawnPosition();
+            }
             GameObject enemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
             enemy.GetComponent<Enemy>().SetEnemy(_baseHealth + _healthPerWave * _waveNumber, _baseSpeed + _speedPerWave * _waveNumber,
                 _baseDamage + _damagePerWave * _waveNumber, _baseAttackSpeed + _attackSpeedPerWave * _waveNumber, _player, this);
@@ -68,7 +72,7 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
-    // Génère une position en dehors du champ de vision de la caméra
+    // Gï¿½nï¿½re une position en dehors du champ de vision de la camï¿½ra
     private Vector3 GetSpawnPosition()
     {
         Camera cam = Camera.GetComponent<Camera>();
@@ -79,15 +83,12 @@ public class WaveManager : MonoBehaviour
         spawnPosition.z = 0;
         return spawnPosition;
     }
-    private bool IsPositionOccupied(Vector3 position)
+    private bool IsPositionValid(Vector3 position)
     {
-        float minDistance = 1.5f;
-        foreach (GameObject enemy in _enemies)
+        Collider2D hit = Physics2D.OverlapCircle(position, _enemySize);
+        if (hit == null)
         {
-            if (Vector3.Distance(position, enemy.transform.position) < minDistance)
-            {
-                  return true;
-            }
+            return true;
         }
         return false;
     }
@@ -102,6 +103,12 @@ public class WaveManager : MonoBehaviour
             NextWave();
         }
         yield return null;
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Camera.transform.position, _enemySize);
     }
 }
 
