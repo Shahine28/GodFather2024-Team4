@@ -51,13 +51,13 @@ public class WaveManager : MonoBehaviour
         {
             Vector3 spawnPosition = GetSpawnPosition();
             int occurence = 0;
-            while (!IsPositionValid(spawnPosition) && occurence < _enemiesPerWave * 6)
+            while (!IsPositionValid(spawnPosition) && occurence < _enemiesPerWave * _waveNumber)
             {
                 occurence++;
                 spawnPosition = GetSpawnPosition();
             }
             GameObject enemy = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
-            enemy.GetComponent<Enemy>().SetEnemy(_baseHealth + _healthPerWave * _waveNumber, _baseSpeed + _speedPerWave * _waveNumber,
+            enemy.GetComponentInChildren<Enemy>().SetEnemy(_baseHealth + _healthPerWave * _waveNumber, _baseSpeed + _speedPerWave * _waveNumber,
                 _baseDamage + _damagePerWave * _waveNumber, _baseAttackSpeed + _attackSpeedPerWave * _waveNumber, _player, this);
 
             _enemies.Add(enemy);

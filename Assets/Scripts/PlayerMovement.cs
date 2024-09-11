@@ -2,29 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _maxSpeed;
-    
-    private float _moveX;
-    private float _moveY;
+
+    private Vector2 _move;
 
     [SerializeField] private Rigidbody2D _rb;
 
     private bool _isMoving => Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
 
-    void UpdateMoveDirection()
+    public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
-        _moveX = Input.GetAxis("Horizontal");
-        _moveY = Input.GetAxis("Vertical");
+        _move = context.ReadValue<Vector2>();
 
     }
 
     void UpdateMoveSpeed()
     {
-        UpdateMoveDirection();
-        _rb.velocity = new Vector2(_maxSpeed * _moveX, _maxSpeed * _moveY);
+        _rb.velocity = new Vector2(_maxSpeed * _move.x, _maxSpeed * _move.y);
     }
 
     // Update is called once per frame
