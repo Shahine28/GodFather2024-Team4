@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/Virtual Camera.prefab.meta
+guid: e60016909af3fbe448d144ab4bb2df48
+PrefabImporter:
+========
 guid: 0851605490a599b46b6ac5cb681d93ea
 DefaultImporter:
+>>>>>>>> dev:Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder Example.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
