@@ -130,11 +130,11 @@ public class Enemy : MonoBehaviour
     {
         _health -= Mathf.Abs(damage);
         _healthBar.value = _health;
-        _recoilFeedback?.PlayFeedbacks();
-        if (_health <= 0)
+        if (_health > 0) { _recoilFeedback?.PlayFeedbacks(); }
+        else
         {
             _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
-            Destroy(gameObject);
+            Destroy(gameObject);    
         }
     }
 
