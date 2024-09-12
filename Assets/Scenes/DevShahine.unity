@@ -269,6 +269,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602660044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1680391868226178552, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
+  m_PrefabInstance: {fileID: 631728664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &631728664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,6 +494,173 @@ PrefabInstance:
       addedObject: {fileID: 1278886970}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
+--- !u!1001 &705264846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 232589384875726421, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 725996347}
+    - target: {fileID: 232589384875726421, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 705264849}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 725996347}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 680fb96c-6a4c-4e0d-982f-11ea85016932
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 2b397257-e00d-491b-b807-860476a04ac3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: d7c3e5e6-2207-4ab3-baee-c31a5cbe5ecf
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: d589667e-ba90-40c6-9d31-45a691a7c543
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[9].m_ActionId
+      value: 97094b5d-8edd-464f-88fa-2e0840e90d1d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: GameMaster/Multiplicateur[/Keyboard/semicolon]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: GameMaster/Stats[/Keyboard/s]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: GameMaster/Touches[/Keyboard/t]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: GameMaster/Vision[/Keyboard/v]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[9].m_ActionName
+      value: GameMaster/Heal[/Keyboard/h]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570027409504750443, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: _healthBar
+      value: 
+      objectReference: {fileID: 1960375155}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: managedReferences[3724296834592014337].BoundImage
+      value: 
+      objectReference: {fileID: 602660044}
+    - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: managedReferences[3724296834592014340].TargetRectTransform
+      value: 
+      objectReference: {fileID: 1960375156}
+    - target: {fileID: 7282406286651958297, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Name
+      value: RealPlayer (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+--- !u!114 &705264847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5570027409504750443, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705264850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f483d71576afae547b1452e77f37e038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &705264848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 232589384875726421, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b2d534206bf34fbc40b2a626013ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &705264849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4305765354582964633, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705264850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d396c27204684974bb55e6f0cb5294f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &705264850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7282406286651958297, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &725996345
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +892,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 755720583}
         m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
-        m_MethodName: Buff
+        m_MethodName: Bombe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -730,7 +908,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 755720583}
         m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
-        m_MethodName: Nerf
+        m_MethodName: Frenzie
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -742,6 +920,86 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5ed3dae2-97d0-442a-9e58-68724b03aac2
     m_ActionName: GameMaster/Nerf[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755720583}
+        m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
+        m_MethodName: Multiplier
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 680fb96c-6a4c-4e0d-982f-11ea85016932
+    m_ActionName: GameMaster/Multiplicateur[/Keyboard/semicolon]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755720583}
+        m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
+        m_MethodName: Stats
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2b397257-e00d-491b-b807-860476a04ac3
+    m_ActionName: GameMaster/Stats[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755720583}
+        m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
+        m_MethodName: Binding
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d7c3e5e6-2207-4ab3-baee-c31a5cbe5ecf
+    m_ActionName: GameMaster/Touches[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755720583}
+        m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
+        m_MethodName: Vision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d589667e-ba90-40c6-9d31-45a691a7c543
+    m_ActionName: GameMaster/Vision[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 755720583}
+        m_TargetAssemblyTypeName: HappeningManager, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 97094b5d-8edd-464f-88fa-2e0840e90d1d
+    m_ActionName: GameMaster/Heal[/Keyboard/h]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: GameMaster
@@ -760,8 +1018,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 755720582}
-  _player: {fileID: 0}
-  _waveManager: {fileID: 1911422392}
+  _playerMovement: {fileID: 705264849}
+  _playerAttack: {fileID: 705264848}
+  _playerLife: {fileID: 705264847}
+  _waveManager: {fileID: 1911422394}
+  _movementAttackLifeNerf: {x: 2, y: 3, z: 0}
+  _statsNerfDuration: 10
+  _scoreMultiplierBuff: 2
+  _multiplierBuffDuration: 10
+  _bombeDelayBewteenKills: 0.05
+  _reverseBindingDuration: 5
+  _visionDuration: 10
+  _healingAmount: 10
+  _FrenzieDuration: 10
+  _movementAttackLifeBuff: {x: 5, y: 99999, z: 100}
 --- !u!4 &755720584
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,75 +1510,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278886969}
   m_CullTransparentMesh: 1
---- !u!1001 &1551093191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5570027409504750443, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 1960375155}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.428146
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5022404
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6412115799487694322, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032776661709670259, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: managedReferences[3724296834592014337].BoundImage
-      value: 
-      objectReference: {fileID: 151617827}
-    - target: {fileID: 7032776661709670259, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: managedReferences[3724296834592014340].TargetRectTransform
-      value: 
-      objectReference: {fileID: 1960375156}
-    - target: {fileID: 7282406286651958297, guid: f9406a33814af9c47b352e77f079d798, type: 3}
-      propertyPath: m_Name
-      value: RealPlayer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f9406a33814af9c47b352e77f079d798, type: 3}
 --- !u!1 &1911422392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,24 +1556,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 725996345}
   _enemyPrefab: {fileID: 8921006424738256811, guid: 8dd54b39d929b1f48b55bfc62f1cbe4c, type: 3}
-  _player: {fileID: 0}
+  _player: {fileID: 705264850}
   _waveNumber: 0
   _enemiesPerWave: 10
   _enemiesPerWaveIncrement: 5
   _timeBetweenWaves: 5
   _timeBetweenEnemies: 1
   _enemySize: 1
-  _randomRange: {x: 20, y: 20}
+  _randomRange: {x: 15, y: 25}
+  _cooldownBeforeNewWave: 0
+  _cooldownTime: 1
   _baseHealth: 90
   _healthPerWave: 10
   _baseSpeed: 4
   _speedPerWave: 1
-  _baseDamage: 9
+  _baseDamage: 5
   _damagePerWave: 1
-  _baseAttackSpeed: 1
+  _baseAttackSpeed: 3
   _attackSpeedPerWave: 0.1
   _waveText: {fileID: 2146242987}
   _scoreMuktiplier: 1
+  _enemies: []
 --- !u!114 &1960375155 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5077338737754664696, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
@@ -1726,6 +1930,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 4448822589783892628}
   - {fileID: 725996348}
+  - {fileID: 705264846}
   - {fileID: 1911422393}
   - {fileID: 601376018}
   - {fileID: 2104288083}
