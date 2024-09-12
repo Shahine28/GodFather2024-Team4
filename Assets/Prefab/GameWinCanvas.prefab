@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Top: -192
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 70
+  m_Spacing: 103.93
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -380,8 +380,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 210.5
-  m_fontSizeBase: 210.5
+  m_fontSize: 387.3
+  m_fontSizeBase: 387.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0

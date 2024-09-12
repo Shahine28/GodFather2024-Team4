@@ -1,4 +1,5 @@
 using Cinemachine.PostFX;
+using Cinemachine.PostFX.Editor;
 using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,19 +9,14 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
-    [Header ("Parameters")]
     [SerializeField] private float _maxLife;
     public float MaxLife => _maxLife;
     [SerializeField] private float _currentLife;
     public float CurrLife => _currentLife;
     public float CurrentLife => _currentLife;
-
-    [Header ("Feedbacks")]
-    [SerializeField] private MMF_Player _damageFeedback;
-
-    [Header("UI")]
-    [SerializeField] private GameObject _gameOverUI;
     [SerializeField] private Slider _healthBar;
+
+    [SerializeField] private MMF_Player _damageFeedback;
     //private bool _invincible;
     void Start()
     {
@@ -60,8 +56,10 @@ public class PlayerLife : MonoBehaviour
 
     private void GameOver()
     {
-        _gameOverUI.SetActive(true);
-        Time.timeScale = 0;
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
     }
 
     public void SetCurrentLife(float life)

@@ -1,4 +1,3 @@
-using Cinemachine.PostFX;
 using NaughtyAttributes;
 using System;
 using System.Collections;
@@ -42,11 +41,9 @@ public class HappeningManager : MonoBehaviour
     [SerializeField, Foldout("Reverse Binding")] private UnityEvent _reverseBindingOffEvent;
 
     [SerializeField, Foldout("Vision")] private float _visionDuration = 10f;
-    [SerializeField, Foldout("Vision")] private CinemachineVolumeSettings _visionSettings;
     private bool _isVision = false;
     [SerializeField, Foldout("Vision")] private UnityEvent _visionOnEvent;
     [SerializeField, Foldout("Vision")] private UnityEvent _visionOffEvent;
-
 
 
     [SerializeField, Foldout("Heal")] private float _healingAmount = 10f;
@@ -153,7 +150,6 @@ public class HappeningManager : MonoBehaviour
 
     private void MultiplierOff()
     {
-         StopCoroutine(Multiplier());
         _multiplierOffEvent?.Invoke();
         _isMultiplier = false;
         Debug.Log("Score Multiplier back to normal");
@@ -188,7 +184,6 @@ public class HappeningManager : MonoBehaviour
 
     private void StatsOff()
     {
-        StopCoroutine(Stats());
         _statsNerfOffEvent?.Invoke();
         _isStatsNerf = false;
         _playerMovement.SetMaxSpeed(_maxSpeedNerf);
@@ -221,7 +216,6 @@ public class HappeningManager : MonoBehaviour
 
     private void BindingOff()
     {
-        StopCoroutine(Binding());
         _reverseBindingOffEvent?.Invoke();
         _isReverseBinding = false;
         Debug.Log("Binding back to normal");
@@ -243,16 +237,13 @@ public class HappeningManager : MonoBehaviour
         _isVision = true;
         Debug.Log("Vision");
         _visionOnEvent?.Invoke();
-        _visionSettings.enabled = true;
-        yield return new WaitForSeconds(_visionDuration);
+        yield return new WaitForSeconds(0);
         if (_isVision) VisionOff();
     }
 
     private void VisionOff()
     {
-        StopCoroutine(Vision());
        _isVision = false;
-        _visionSettings.enabled = false;
         _visionOffEvent?.Invoke();
         Debug.Log("Vision off");
     }
