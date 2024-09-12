@@ -24,9 +24,9 @@ public class Enemy : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private float _damage = 10;
     [SerializeField] private float _attackSpeed = 1;
-    private float _attackTimer = 0;
+    public float _attackTimer = 0;
     [SerializeField] private float _attackRange = 1f;
-    [SerializeField] private bool _IsInAttackRange = false;
+    [SerializeField] private bool _isInAttackRange = false;
 
     [Header("Health")]
     [SerializeField] private float _health = 100;
@@ -113,12 +113,12 @@ public class Enemy : MonoBehaviour
             {
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 _rb.velocity = direction * _speed;
-                if (_IsInAttackRange) _IsInAttackRange = false; _attackTimer = _attackSpeed;
+                if (_isInAttackRange) _isInAttackRange = false;
             }
             else
             {
                 _rb.velocity = Vector2.zero;
-                if (!_IsInAttackRange) _IsInAttackRange = true;
+                if (!_isInAttackRange) _isInAttackRange = true;
             }
         }
     }
@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour
     private void Damage(float damage)
     {
         _attackTimer -= Time.deltaTime;
-        if (_player != null && _IsInAttackRange && _attackTimer <= 0)
+        if (_player != null && _isInAttackRange && _attackTimer <= 0)
         {
             PlayerLife player = _player.GetComponent<PlayerLife>();
             player.TakeDamage(damage);
