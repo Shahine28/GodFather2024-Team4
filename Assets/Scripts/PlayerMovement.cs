@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
 
+    public Animator playerAnimator;
+
 
     public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
@@ -27,5 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateMoveSpeed();
+
+        playerAnimator.SetInteger("VerticalMovement", _move.y == 0 ? 0 : _move.y > 0 ? 1 : -1);
     }
 }
