@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _playerMovement;
     public Vector2 PlayerMove => _playerMovement;
 
+    public Animator playerAnimator;
+
 
     public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateMoveSpeed();
+
+        playerAnimator.SetInteger("VerticalMovement", _move.y == 0 ? 0 : _move.y > 0 ? 1 : -1);
     }
 
     public void SetMaxSpeed(float maxSpeed)
