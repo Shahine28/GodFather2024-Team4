@@ -12,12 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _rb;
 
-    private bool _isMoving => Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
 
     public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
-        _move = context.ReadValue<Vector2>();
-
+       _move = context.ReadValue<Vector2>();
     }
 
     void UpdateMoveSpeed()

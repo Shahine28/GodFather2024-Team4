@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Input")]
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private  InputManager _inputManager;
+
+    [SerializeField] private bool _isUsingKeyboard => _inputManager.IsUsingGamepad()== false;
     //[SerializeField] private Animator _animator;
     [Header("Attack")]
     [SerializeField] private CircleCollider2D _coll;
@@ -24,8 +30,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform _playerTransform;
 
+
     private Vector2 lookInput; // Stocke l'input de la souris ou du joystick
-    private float currentAngle = 0f; // Angle actuel pour la rotation
 
     private void Start()
     {
@@ -42,7 +48,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        lookInput = context.ReadValue<Vector2>();
+        /*if (context.performed) */lookInput = context.ReadValue<Vector2>();
+        //if (context.canceled && !_isUsingKeyboard) lookInput = Vector2.zero;
     }
 
     private void RotateChildAroundParent()
@@ -50,23 +57,26 @@ public class PlayerAttack : MonoBehaviour
         Vector2 direction;
 
         // Si l'input du joystick est actif
-        if (lookInput.magnitude > 0.1f)
+        if (lookInput.magnitude > 0.65f && !_isUsingKeyboard)
         {
+            Debug.Log("Joystick actif");
             direction = lookInput.normalized; // Normaliser l'input du stick pour obtenir la direction
         }
-        else
+        else if (Mouse.current != null ||  _isUsingKeyboard) // Si l'input vient de la souris
         {
-            // Si l'input de la souris est utilisé
-            Vector3 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(mousePosition);
+            Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             direction = (worldMousePos - parentObject.position).normalized; // Calcul de la direction vers la souris
         }
+        else // Si aucun input n'est actif
+        {
+            direction = Vector2.zero;
+        }
 
-        // Calcul de la nouvelle position de l'enfant autour du parent
-        Vector3 newPosition = parentObject.position + new Vector3(direction.x, direction.y, 0) * _rotationRadius;
-
-        // Appliquer instantanément la position de l'enfant
-        transform.position = newPosition;
+        // Calcul de l'angle pour orienter l'objet enfant sans changer sa position
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        // Appliquer la rotation à l'enfant pour qu'il pointe dans la bonne direction
+        transform.rotation = rotation;
     }
 
 

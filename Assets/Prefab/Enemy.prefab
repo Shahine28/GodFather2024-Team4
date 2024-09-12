@@ -781,15 +781,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveManager: {fileID: 0}
   _rb: {fileID: 3148122743504311339}
-  _speed: 5
+  _speed: 4
   _rotationSpeed: 5
-  _stopDistance: 0.23
+  _stopDistance: 0.001
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  _damage: 10
+  _damage: 5
   _attackSpeed: 1
-  _attackRange: 2
+  _attackRange: 1.5
   _IsInAttackRange: 0
   _health: 100
   _healthBar: {fileID: 8198887200383810211}
