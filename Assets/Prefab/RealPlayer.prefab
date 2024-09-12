@@ -352,7 +352,6 @@ GameObject:
   - component: {fileID: 5570027409504750443}
   - component: {fileID: 2204683000982426378}
   - component: {fileID: 6158057163598334862}
-  - component: {fileID: 5525310388400299412}
   m_Layer: 0
   m_Name: RealPlayer
   m_TagString: Player
