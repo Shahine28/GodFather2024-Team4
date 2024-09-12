@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private float _maxLife;
+    public float MaxLife => _maxLife;
     [SerializeField] private float _currentLife;
+    public float CurrLife => _currentLife;
     public float CurrentLife => _currentLife;
     [SerializeField] private Slider _healthBar;
     //private bool _invincible;
@@ -49,6 +52,11 @@ public class PlayerLife : MonoBehaviour
         Application.Quit();
     }
 
+    public void SetCurrentLife(float life)
+    {
+        _currentLife = life;
+        _healthBar.value = _currentLife;
+    }
 
     //public IEnumerator HitStun()
     //{

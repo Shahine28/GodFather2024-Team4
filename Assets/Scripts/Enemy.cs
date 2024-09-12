@@ -120,7 +120,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    [Button]
     public void TakeDamage() //C'est pour tester la fonction TakeDamage dans l'éditeur
     { TakeDamage(10); }
     public void TakeDamage(float damage)
@@ -132,6 +131,12 @@ public class Enemy : MonoBehaviour
             _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
             Destroy(gameObject);
         }
+    }
+
+    [Button]
+    public void Kill()
+    {
+        TakeDamage(_health);
     }
 
     private void Damage(float damage)

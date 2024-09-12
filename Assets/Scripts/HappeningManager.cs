@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,8 +16,38 @@ public class HappeningManager : MonoBehaviour
     [SerializeField] private PlayerLife _playerLife;
 
     [Header("Happenings")]
-    [SerializeField] private GameObject _waveManager;
-    [SerializeField] private Vector3 _movementAttackLife;
+    [SerializeField] private WaveManager _waveManager;
+
+
+    [SerializeField] private Vector3 _movementAttackLifeNerf;
+    [SerializeField] private float _statsNerfDuration = 10f;
+    private bool _isStatsNerf = false;
+
+    [SerializeField] private int _scoreMultiplierBuff = 2;
+    [SerializeField] private float _multiplierBuffDuration = 10f;
+    private bool _isMultiplier = false;
+
+
+    [SerializeField] private float _bombeDelayBewteenKills = 0.5f;
+
+    [SerializeField] private float _reverseBindingDuration = 10f;
+    private bool _isReverseBinding = false;
+
+    [SerializeField] private float _visionDuration = 10f;
+    private bool _isVision = false;
+
+    [SerializeField] private float _healingAmount = 10f;
+
+
+    [SerializeField] private float _FrenzieDuration = 10f;
+    [SerializeField] private Vector3 _movementAttackLifeBuff;
+    private bool _isFrenzie = false;
+    private float _maxSpeedFrenzie;
+    private float _damageFrenzie;
+    private float _currentLifeFrenzie;
+    private float _maxSpeedNerf;
+    private float _damageNerf;
+    private float _currentLifeNerf;
 
     // Start is called before the first frame update
     void Start()
@@ -34,49 +65,162 @@ public class HappeningManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Bombe");
+            StartCoroutine(_waveManager.Bombe(_bombeDelayBewteenKills));
+            Debug.Log("Boooooooom !");
         }
     }
+
+    public void Heal(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Heal");
+            _playerLife.Heal(_healingAmount);
+        }
+    }
+    #region Frenzie
     public void Frenzie(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Frenzie");
+            if (!_isFrenzie) StartCoroutine(Frenzie());
+            else FrenzieOff();
         }
     }
+    private IEnumerator Frenzie()
+    {
+        _isFrenzie = true;
+        _maxSpeedFrenzie = _playerMovement.MaxSpeed;
+        _damageFrenzie = _playerAttack.Damage;
+        _currentLifeFrenzie = _playerLife.MaxLife;
+        _playerMovement.SetMaxSpeed(_maxSpeedFrenzie + _movementAttackLifeBuff.x);
+        _playerAttack.SetDamage(_damageFrenzie + _movementAttackLifeBuff.y);
+        _playerLife.SetCurrentLife(_currentLifeFrenzie + _movementAttackLifeBuff.z);
+        Debug.Log("Frenzie --> Stats Buffed for " + _statsNerfDuration + " seconds");
+        yield return new WaitForSeconds(_statsNerfDuration);
+        if (_isFrenzie) FrenzieOff();
+    }
+    
+    private void FrenzieOff()
+    {
+        StopCoroutine(Frenzie());
+        _playerMovement.SetMaxSpeed(_maxSpeedFrenzie);
+        _playerAttack.SetDamage(_damageFrenzie);
+        _playerLife.SetCurrentLife(_currentLifeFrenzie);
+        Debug.Log("Stats back to normal");
+        _isFrenzie = false;
+    }
+    #endregion
+
+    #region Multiplier
     public void Multiplier(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Multiplier");
+            if(!_isMultiplier)  StartCoroutine(Multiplier());
+            else MultiplierOff();
         }
     }
+    private IEnumerator Multiplier()
+    {
+        _isMultiplier = true;
+        _waveManager.SetScoreMultiplier(_scoreMultiplierBuff);
+        Debug.Log("Score Multiplier Buffed for " + _multiplierBuffDuration + " seconds");
+        yield return new WaitForSeconds(_multiplierBuffDuration);
+        if (_isMultiplier) MultiplierOff();
+    }
 
+    private void MultiplierOff()
+    {
+        _isMultiplier = false;
+        Debug.Log("Score Multiplier back to normal");
+        _waveManager.SetScoreMultiplier(1);
+    }
+    #endregion
+
+    #region Stats
     public void Stats(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Stats");
+            if (!_isStatsNerf) StartCoroutine(Stats());
+            else StatsOff();
         }
     }
+    private IEnumerator Stats()
+    {
+        _isStatsNerf = true;
+        _maxSpeedNerf = _playerMovement.MaxSpeed;
+        _damageNerf = _playerAttack.Damage;
+        _currentLifeNerf = _playerLife.MaxLife;
+        _playerMovement.SetMaxSpeed(_maxSpeedNerf - _movementAttackLifeNerf.x);
+        _playerAttack.SetDamage(_damageNerf - _movementAttackLifeNerf.y);
+        _playerLife.SetCurrentLife(_currentLifeNerf - _movementAttackLifeNerf.z);
+        Debug.Log("Stats Nerfed for " + _statsNerfDuration + " seconds");
+        yield return new WaitForSeconds(_statsNerfDuration);
+        if (_isStatsNerf) StatsOff();
+        
+    }
 
+    private void StatsOff()
+    {
+        _isStatsNerf = false;
+        _playerMovement.SetMaxSpeed(_maxSpeedNerf);
+        _playerAttack.SetDamage(_damageNerf);
+        _playerLife.SetCurrentLife(_currentLifeNerf);
+        Debug.Log("Stats back to normal");
+    }
+    #endregion
+
+    #region Binding
     public void Binding(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Binding");
+            if (!_isReverseBinding) StartCoroutine(Binding());
+            else BindingOff();
         }
     }
+
+    private IEnumerator Binding()
+    {
+        _isReverseBinding = true;
+        _playerMovement.ReverseBindingDirection();
+        Debug.Log("Binding reversed for " + _reverseBindingDuration + " seconds");
+        yield return new WaitForSeconds(_reverseBindingDuration);
+        if (_isReverseBinding) BindingOff();
+       
+    }
+
+    private void BindingOff()
+    {
+        _isReverseBinding = false;
+        Debug.Log("Binding back to normal");
+        _playerMovement.ReverseBindingDirection();
+    }
+    #endregion 
+
+    #region Vision
     public void Vision(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("Vision");
+            if (!_isVision) StartCoroutine(Vision());
+            else VisionOff();
         }
     }
+    private IEnumerator Vision()
+    {
+        _isVision = true;
+        Debug.Log("Vision");
+        yield return new WaitForSeconds(0);
+        if (_isVision) VisionOff();
+    }
 
-
-
-
-
+    private void VisionOff()
+    {
+       _isVision = false;
+        Debug.Log("Vision off");
+    }
+    #endregion
 }

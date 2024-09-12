@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _cooldownTime;
     private float _reloadTime;
     [SerializeField] private float _damage;
+    public float Damage => _damage;
     [SerializeField] private ContactFilter2D _contactFilter;
     [SerializeField] private List<Collider2D> _collidersInContact = new List<Collider2D>();
 
@@ -48,8 +49,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        /*if (context.performed) */lookInput = context.ReadValue<Vector2>();
-        //if (context.canceled && !_isUsingKeyboard) lookInput = Vector2.zero;
+        if (context.performed) lookInput = context.ReadValue<Vector2>();
+        if (context.canceled && !_isUsingKeyboard) lookInput = Vector2.zero;
     }
 
     private void RotateChildAroundParent()
@@ -96,6 +97,11 @@ public class PlayerAttack : MonoBehaviour
             }
             _reloadTime = 0;
         }
+    }
+
+    public void SetDamage(float damage)
+    {
+        _damage = damage;
     }
    
 }

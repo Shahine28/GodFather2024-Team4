@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using NaughtyAttributes;
+using System.Linq;
 
 public class WaveManager : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float _timeBetweenEnemies = 1f;
     [SerializeField] private float _enemySize = 1f;
     [SerializeField] private Vector2 _randomRange;
+    [SerializeField] private bool _cooldownBeforeNewWave = true;
+    [SerializeField, ShowIf("_cooldownBeforeNewWave")] private float _cooldownTime = 5f;
+    private bool _isWaveActive = false;
+    private float _cooldownTimer;
 
 
     [Header("Enemy Settings")]
@@ -38,21 +44,35 @@ public class WaveManager : MonoBehaviour
     private int _catsKilled = 0;
     [SerializeField] private int _scoreMuktiplier = 1;
 
-    private List<GameObject> _enemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> _enemies = new List<GameObject>();
 
     private void Start()
     {
         StartCoroutine(StartWave());
+        _cooldownTimer = _cooldownTime;
     }
     
     // Update is called once per frame
     void Update()
     {
-
+        if (_isWaveActive && _cooldownBeforeNewWave)
+        {
+            _cooldownTimer -= Time.deltaTime;
+            if (_cooldownTimer <= 0)
+            {
+                NextWave();
+                _cooldownTimer = _cooldownTime;
+            }
+        }
     }
 
+    public void SetScoreMultiplier(int multiplier)
+    {
+        _scoreMuktiplier = multiplier;
+    }
     public IEnumerator StartWave()
     {
+        _isWaveActive = true;
         _waveNumber++;
         for (int i = 0; i < _enemiesPerWave; i++)
         {
@@ -108,6 +128,7 @@ public class WaveManager : MonoBehaviour
         if (_enemies.Count == 0)
         {
             Debug.Log("Wave " + _waveNumber + " cleared!");
+            _isWaveActive = false;
             yield return new WaitForSeconds(_timeBetweenWaves);
             NextWave();
         }
@@ -118,6 +139,20 @@ public class WaveManager : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(Camera.transform.position, _enemySize);
+    }
+
+    public IEnumerator Bombe(float TimeBetweenKill = .25f)
+    {
+        int occ = 0;
+        int occMax = _enemies.Count * _enemiesPerWave;
+        _enemies = _enemies.OrderBy(go => Vector3.Distance(go.transform.position, _player.transform.position)).ToList();
+        while (_enemies.Count > 0 && occ < occMax )
+        {
+            _enemies[0]?.GetComponent<Enemy>().Kill();
+            yield return new WaitForSeconds(TimeBetweenKill);
+            occ++;
+        } 
+        
     }
 }
 
