@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Input")]
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private  InputManager _inputManager;
+    [SerializeField] private PlayerMovement _playerMovement;
 
     [SerializeField] private bool _isUsingKeyboard => _inputManager.IsUsingGamepad()== false;
     //[SerializeField] private Animator _animator;
@@ -42,7 +43,6 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         if (_reloadTime < _cooldownTime) _reloadTime += Time.deltaTime;
-        
         RotateChildAroundParent();
     }
 
@@ -63,16 +63,21 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Joystick actif");
             direction = lookInput.normalized; // Normaliser l'input du stick pour obtenir la direction
         }
-        else if (Mouse.current != null ||  _isUsingKeyboard) // Si l'input vient de la souris
+        else if (_isUsingKeyboard) // Si l'input utiliser est le clavier on utilise la souris.
         {
             Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             direction = (worldMousePos - parentObject.position).normalized; // Calcul de la direction vers la souris
         }
-        else // Si aucun input n'est actif
+        // Si aucun input n'est actif, on utilise la direction du mouvement
+        else if (_playerMovement.PlayerMove.magnitude > 0)
+        {
+            direction = _playerMovement.PlayerMove.normalized; // Orienter vers la direction du mouvement
+        }
+        // Si aucun input ni mouvement
+        else
         {
             direction = Vector2.zero;
         }
-
         // Calcul de l'angle pour orienter l'objet enfant sans changer sa position
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);

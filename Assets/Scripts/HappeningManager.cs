@@ -1,8 +1,10 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class HappeningManager : MonoBehaviour
@@ -15,32 +17,43 @@ public class HappeningManager : MonoBehaviour
     [SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private PlayerLife _playerLife;
 
-    [Header("Happenings")]
+    [Header("Player Manager")]
     [SerializeField] private WaveManager _waveManager;
 
-
-    [SerializeField] private Vector3 _movementAttackLifeNerf;
-    [SerializeField] private float _statsNerfDuration = 10f;
+    [SerializeField, Foldout("Stats Nerf")] private Vector3 _movementAttackLifeNerf;
+    [SerializeField, Foldout("Stats Nerf")] private float _statsNerfDuration = 10f;
     private bool _isStatsNerf = false;
+    [SerializeField, Foldout("Stats Nerf")] private UnityEvent _statsNerfOnEvent;
+    [SerializeField, Foldout("Stats Nerf")] private UnityEvent _statsNerfOffEvent;
 
-    [SerializeField] private int _scoreMultiplierBuff = 2;
-    [SerializeField] private float _multiplierBuffDuration = 10f;
+    [SerializeField, Foldout("Score Multiplier")] private int _scoreMultiplierBuff = 2;
+    [SerializeField, Foldout("Score Multiplier")] private float _multiplierBuffDuration = 10f;
     private bool _isMultiplier = false;
+    [SerializeField, Foldout("Score Multiplier")] private UnityEvent _multiplierOnEvent;
+    [SerializeField, Foldout("Score Multiplier")] private UnityEvent _multiplierOffEvent;
 
+    [SerializeField, Foldout("Bombe")] private float _bombeDelayBewteenKills = 0.5f;
+    [SerializeField, Foldout("Bombe")] private UnityEvent _bombeEvent;
 
-    [SerializeField] private float _bombeDelayBewteenKills = 0.5f;
-
-    [SerializeField] private float _reverseBindingDuration = 10f;
+    [SerializeField, Foldout("Reverse Binding")] private float _reverseBindingDuration = 10f;
     private bool _isReverseBinding = false;
+    [SerializeField, Foldout("Reverse Binding")] private UnityEvent _reverseBindingOnEvent;
+    [SerializeField, Foldout("Reverse Binding")] private UnityEvent _reverseBindingOffEvent;
 
-    [SerializeField] private float _visionDuration = 10f;
+    [SerializeField, Foldout("Vision")] private float _visionDuration = 10f;
     private bool _isVision = false;
+    [SerializeField, Foldout("Vision")] private UnityEvent _visionOnEvent;
+    [SerializeField, Foldout("Vision")] private UnityEvent _visionOffEvent;
 
-    [SerializeField] private float _healingAmount = 10f;
 
+    [SerializeField, Foldout("Heal")] private float _healingAmount = 10f;
+    [SerializeField, Foldout("Heal")] private UnityEvent _healEvent;
 
-    [SerializeField] private float _FrenzieDuration = 10f;
-    [SerializeField] private Vector3 _movementAttackLifeBuff;
+    [SerializeField, Foldout("Frenzie")] private float _FrenzieDuration = 10f;
+    [SerializeField, Foldout("Frenzie")] private Vector3 _movementAttackLifeBuff;
+    [SerializeField, Foldout("Frenzie")] private UnityEvent _frenzieOnEvent;
+    [SerializeField, Foldout("Frenzie")] private UnityEvent _frenzieOffEvent;
+
     private bool _isFrenzie = false;
     private float _maxSpeedFrenzie;
     private float _damageFrenzie;
@@ -66,6 +79,7 @@ public class HappeningManager : MonoBehaviour
         if (context.performed)
         {
             StartCoroutine(_waveManager.Bombe(_bombeDelayBewteenKills));
+            _bombeEvent?.Invoke();
             Debug.Log("Boooooooom !");
         }
     }
@@ -75,6 +89,7 @@ public class HappeningManager : MonoBehaviour
         if (context.performed)
         {
             Debug.Log("Heal");
+            _healEvent?.Invoke();
             _playerLife.Heal(_healingAmount);
         }
     }
@@ -89,6 +104,7 @@ public class HappeningManager : MonoBehaviour
     }
     private IEnumerator Frenzie()
     {
+        _frenzieOnEvent?.Invoke();
         _isFrenzie = true;
         _maxSpeedFrenzie = _playerMovement.MaxSpeed;
         _damageFrenzie = _playerAttack.Damage;
@@ -104,6 +120,7 @@ public class HappeningManager : MonoBehaviour
     private void FrenzieOff()
     {
         StopCoroutine(Frenzie());
+        _frenzieOffEvent?.Invoke();
         _playerMovement.SetMaxSpeed(_maxSpeedFrenzie);
         _playerAttack.SetDamage(_damageFrenzie);
         _playerLife.SetCurrentLife(_currentLifeFrenzie);
@@ -123,6 +140,7 @@ public class HappeningManager : MonoBehaviour
     }
     private IEnumerator Multiplier()
     {
+        _multiplierOnEvent?.Invoke();
         _isMultiplier = true;
         _waveManager.SetScoreMultiplier(_scoreMultiplierBuff);
         Debug.Log("Score Multiplier Buffed for " + _multiplierBuffDuration + " seconds");
@@ -132,6 +150,7 @@ public class HappeningManager : MonoBehaviour
 
     private void MultiplierOff()
     {
+        _multiplierOffEvent?.Invoke();
         _isMultiplier = false;
         Debug.Log("Score Multiplier back to normal");
         _waveManager.SetScoreMultiplier(1);
@@ -149,6 +168,7 @@ public class HappeningManager : MonoBehaviour
     }
     private IEnumerator Stats()
     {
+        _statsNerfOnEvent?.Invoke();
         _isStatsNerf = true;
         _maxSpeedNerf = _playerMovement.MaxSpeed;
         _damageNerf = _playerAttack.Damage;
@@ -164,6 +184,7 @@ public class HappeningManager : MonoBehaviour
 
     private void StatsOff()
     {
+        _statsNerfOffEvent?.Invoke();
         _isStatsNerf = false;
         _playerMovement.SetMaxSpeed(_maxSpeedNerf);
         _playerAttack.SetDamage(_damageNerf);
@@ -184,6 +205,7 @@ public class HappeningManager : MonoBehaviour
 
     private IEnumerator Binding()
     {
+        _reverseBindingOnEvent?.Invoke();
         _isReverseBinding = true;
         _playerMovement.ReverseBindingDirection();
         Debug.Log("Binding reversed for " + _reverseBindingDuration + " seconds");
@@ -194,6 +216,7 @@ public class HappeningManager : MonoBehaviour
 
     private void BindingOff()
     {
+        _reverseBindingOffEvent?.Invoke();
         _isReverseBinding = false;
         Debug.Log("Binding back to normal");
         _playerMovement.ReverseBindingDirection();
@@ -213,6 +236,7 @@ public class HappeningManager : MonoBehaviour
     {
         _isVision = true;
         Debug.Log("Vision");
+        _visionOnEvent?.Invoke();
         yield return new WaitForSeconds(0);
         if (_isVision) VisionOff();
     }
@@ -220,6 +244,7 @@ public class HappeningManager : MonoBehaviour
     private void VisionOff()
     {
        _isVision = false;
+        _visionOffEvent?.Invoke();
         Debug.Log("Vision off");
     }
     #endregion

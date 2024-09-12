@@ -17,7 +17,6 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private Slider _healthBar;
 
     [SerializeField] private MMF_Player _damageFeedback;
-    [SerializeField] private CinemachineVolumeSettings _volumeSettings;
     //private bool _invincible;
     void Start()
     {
@@ -37,7 +36,6 @@ public class PlayerLife : MonoBehaviour
         else
         {
             _damageFeedback.PlayFeedbacks();
-            ActivatePostProcessFX();
         }
     }
 

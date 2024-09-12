@@ -13,11 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private float _bindingDirection = 1;
 
     [SerializeField] private Rigidbody2D _rb;
+    private Vector2 _playerMovement;
+    public Vector2 PlayerMove => _playerMovement;
 
 
     public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
-       _move = context.ReadValue<Vector2>();
+        _move = context.ReadValue<Vector2>();
+        _playerMovement = _move.normalized;
     }
 
     void UpdateMoveSpeed()
