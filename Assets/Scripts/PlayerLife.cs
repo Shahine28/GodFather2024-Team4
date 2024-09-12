@@ -23,12 +23,15 @@ public class PlayerLife : MonoBehaviour
     {
         _currentLife -= Mathf.Abs(Damage);
         UpdateHealthBar();
-        _damageFeedback.PlayFeedbacks();
 
         if (_currentLife <= 0)
         {
             GameOver();
-        }       
+        }  
+        else
+        {
+            _damageFeedback.PlayFeedbacks();
+        }
     }
 
     public void Heal(float Heal)
