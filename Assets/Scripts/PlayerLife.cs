@@ -3,13 +3,16 @@ using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
     [Header ("Parameters")]
     [SerializeField] private float _maxLife;
+    public float MaxLife => _maxLife;
     [SerializeField] private float _currentLife;
+    public float CurrLife => _currentLife;
     public float CurrentLife => _currentLife;
 
     [Header ("Feedbacks")]
@@ -60,4 +63,16 @@ public class PlayerLife : MonoBehaviour
         _gameOverUI.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void SetCurrentLife(float life)
+    {
+        _currentLife = life;
+        _healthBar.value = _currentLife;
+    }
+
+    //public IEnumerator HitStun()
+    //{
+    //    yield return new WaitForSeconds(.5f);
+    //    _invincible = false;
+    //}
 }

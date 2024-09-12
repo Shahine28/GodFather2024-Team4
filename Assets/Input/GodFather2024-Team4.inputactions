@@ -195,7 +195,7 @@
             "id": "e53d19e0-28e9-40f9-bee9-4c268e0223f6",
             "actions": [
                 {
-                    "name": "Buff",
+                    "name": "Bombe",
                     "type": "Button",
                     "id": "7b856bbd-6643-4231-8477-9341fda3f1bb",
                     "expectedControlType": "Button",
@@ -204,9 +204,54 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Nerf",
+                    "name": "Frénésie",
                     "type": "Button",
                     "id": "5ed3dae2-97d0-442a-9e58-68724b03aac2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Multiplicateur",
+                    "type": "Button",
+                    "id": "680fb96c-6a4c-4e0d-982f-11ea85016932",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stats",
+                    "type": "Button",
+                    "id": "2b397257-e00d-491b-b807-860476a04ac3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Touches",
+                    "type": "Button",
+                    "id": "d7c3e5e6-2207-4ab3-baee-c31a5cbe5ecf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Vision",
+                    "type": "Button",
+                    "id": "d589667e-ba90-40c6-9d31-45a691a7c543",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "97094b5d-8edd-464f-88fa-2e0840e90d1d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -221,18 +266,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Buff",
+                    "action": "Bombe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "6fbf9c12-09f8-47a0-b998-432aa4c7e71b",
-                    "path": "<Keyboard>/n",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Nerf",
+                    "action": "Frénésie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f031810-ee44-4715-985b-eecfc8a3816a",
+                    "path": "<Keyboard>/#(M)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Multiplicateur",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8973535-c7a5-4ad8-9cd6-bfc8723d8491",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Stats",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4eb7867-38f1-4dea-af73-ad5a0cf507ec",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Touches",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8491976f-ad7d-456c-9c87-a77da63b7db5",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Vision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a753c26d-5cc1-405f-b368-7884f95795bf",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
