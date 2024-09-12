@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &151617827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1680391868226178552, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
+  m_PrefabInstance: {fileID: 631728664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &283570058 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3751579856257024657, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
@@ -258,17 +269,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602660044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1680391868226178552, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
-  m_PrefabInstance: {fileID: 631728664}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &631728664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -618,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: managedReferences[3724296834592014337].BoundImage
       value: 
-      objectReference: {fileID: 602660044}
+      objectReference: {fileID: 151617827}
     - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: managedReferences[3724296834592014340].TargetRectTransform
       value: 
@@ -1521,10 +1521,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cats Killed : '
+  m_text: 'Cats Killed '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 032e88aac83be6c4e9961e78675ec223, type: 2}
+  m_sharedMaterial: {fileID: 9220694182184865830, guid: 032e88aac83be6c4e9961e78675ec223, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1548,8 +1548,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 36.99
+  m_fontSizeBase: 36.99
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
