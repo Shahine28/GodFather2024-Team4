@@ -462,6 +462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5077338737754664696, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077338737754664696, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
       propertyPath: m_WholeNumbers
       value: 0
       objectReference: {fileID: 0}
@@ -499,6 +503,10 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 705264849}
+    - target: {fileID: 266081791062618100, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: m_Camera
       value: 
@@ -551,10 +559,22 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[9].m_ActionName
       value: GameMaster/Heal[/Keyboard/h]
       objectReference: {fileID: 0}
+    - target: {fileID: 2524455799994710246, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450888644369016122, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5570027409504750443, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 1960375155}
+    - target: {fileID: 5585249263859499261, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6412115799487694322, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.6
@@ -607,10 +627,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealPlayer (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7282406286651958297, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620392830421509860, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602567237272147639, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602567237272147639, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1027845812797794980, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 266081791062618100, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 705264859}
   m_SourcePrefab: {fileID: 100100000, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
 --- !u!114 &705264847 stripped
 MonoBehaviour:
@@ -650,6 +690,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7282406286651958297, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
   m_PrefabInstance: {fileID: 705264846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &705264851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 266081791062618100, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &705264859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705264851}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FocusTracksTarget: 0
+  m_FocusTracking: 4
+  m_FocusTarget: {fileID: 0}
+  m_FocusOffset: 0
+  m_Profile: {fileID: 11400000, guid: 087a38bd8f76c00478edc8c016c69b59, type: 2}
 --- !u!1 &725996345
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +725,7 @@ GameObject:
   - component: {fileID: 725996346}
   - component: {fileID: 725996349}
   - component: {fileID: 725996350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -767,7 +829,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1013,14 +1075,51 @@ MonoBehaviour:
   _waveManager: {fileID: 1911422394}
   _movementAttackLifeNerf: {x: 2, y: 3, z: 0}
   _statsNerfDuration: 10
+  _statsNerfOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _statsNerfOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _scoreMultiplierBuff: 2
   _multiplierBuffDuration: 10
+  _multiplierOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _multiplierOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _bombeDelayBewteenKills: 0.05
+  _bombeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _reverseBindingDuration: 5
+  _reverseBindingOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _reverseBindingOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _visionDuration: 10
+  _visionSettings: {fileID: 705264859}
+  _visionOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _visionOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _healingAmount: 10
+  _healEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _FrenzieDuration: 10
   _movementAttackLifeBuff: {x: 5, y: 99999, z: 100}
+  _frenzieOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _frenzieOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &755720584
 Transform:
   m_ObjectHideFlags: 0
