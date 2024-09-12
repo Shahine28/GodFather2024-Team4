@@ -69,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
             direction = (worldMousePos - parentObject.position).normalized; // Calcul de la direction vers la souris
         }
         // Si aucun input n'est actif, on utilise la direction du mouvement
-        else if (_playerMovement.PlayerMove.magnitude > 0)
+        else if (_playerMovement.PlayerMove.magnitude > 0 && !_isUsingKeyboard)
         {
             direction = _playerMovement.PlayerMove.normalized; // Orienter vers la direction du mouvement
         }
