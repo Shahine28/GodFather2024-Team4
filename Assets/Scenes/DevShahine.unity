@@ -269,17 +269,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602660044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1680391868226178552, guid: 2b136a281e7b54c4e9e9717a3e5640a1, type: 3}
-  m_PrefabInstance: {fileID: 631728664}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &631728664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: managedReferences[3724296834592014337].BoundImage
       value: 
-      objectReference: {fileID: 602660044}
+      objectReference: {fileID: 151617827}
     - target: {fileID: 7032776661709670259, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: managedReferences[3724296834592014340].TargetRectTransform
       value: 
@@ -749,7 +738,7 @@ Transform:
   m_GameObject: {fileID: 725996345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.428146, y: 1.5022404, z: -10}
+  m_LocalPosition: {x: -7.6, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1024,14 +1013,50 @@ MonoBehaviour:
   _waveManager: {fileID: 1911422394}
   _movementAttackLifeNerf: {x: 2, y: 3, z: 0}
   _statsNerfDuration: 10
+  _statsNerfOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _statsNerfOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _scoreMultiplierBuff: 2
   _multiplierBuffDuration: 10
+  _multiplierOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _multiplierOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _bombeDelayBewteenKills: 0.05
+  _bombeEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _reverseBindingDuration: 5
+  _reverseBindingOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _reverseBindingOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _visionDuration: 10
+  _visionOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _visionOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _healingAmount: 10
+  _healEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _FrenzieDuration: 10
   _movementAttackLifeBuff: {x: 5, y: 99999, z: 100}
+  _frenzieOnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _frenzieOffEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &755720584
 Transform:
   m_ObjectHideFlags: 0
@@ -1939,4 +1964,3 @@ SceneRoots:
   - {fileID: 755720584}
   - {fileID: 1084922072}
   - {fileID: 631728664}
-  - {fileID: 1551093191}
