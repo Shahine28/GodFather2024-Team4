@@ -1,9 +1,9 @@
+using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 100;
     [SerializeField] private Slider _healthBar;
     private Canvas _canvas;
+
+    [Header("Feedbacks")]
+    [SerializeField] private MMF_Player _recoilFeedback;
 
     // Start is called before the first frame update
     void Start()
@@ -127,10 +130,11 @@ public class Enemy : MonoBehaviour
     {
         _health -= Mathf.Abs(damage);
         _healthBar.value = _health;
-        if (_health <= 0)
+        if (_health > 0) { _recoilFeedback?.PlayFeedbacks(); }
+        else
         {
             _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
-            Destroy(gameObject);
+            Destroy(gameObject);    
         }
     }
 
