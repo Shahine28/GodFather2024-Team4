@@ -102,9 +102,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b2d534206bf34fbc40b2a626013ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 3926437679303833492}
+  _playerInput: {fileID: 0}
+  _inputManager: {fileID: 0}
   _coll: {fileID: 7797333114530489515}
   _cooldownTime: 0.25
+  _damage: 0
+  _contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  _collidersInContact: []
+  parentObject: {fileID: 0}
+  _rotationSpeed: 5
+  _rotationRadius: 2
+  mainCamera: {fileID: 0}
+  _playerTransform: {fileID: 0}
 --- !u!1 &5930251507105906732
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLife: 3
-  _skin: {fileID: 94330752362622016}
+  _currentLife: 0
+  _healthBar: {fileID: 0}
 --- !u!114 &7261467000854958936
 MonoBehaviour:
   m_ObjectHideFlags: 0
