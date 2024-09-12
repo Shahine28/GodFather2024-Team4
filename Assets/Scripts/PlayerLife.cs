@@ -1,3 +1,6 @@
+using Cinemachine.PostFX;
+using Cinemachine.PostFX.Editor;
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +15,9 @@ public class PlayerLife : MonoBehaviour
     public float CurrLife => _currentLife;
     public float CurrentLife => _currentLife;
     [SerializeField] private Slider _healthBar;
+
+    [SerializeField] private MMF_Player _damageFeedback;
+    [SerializeField] private CinemachineVolumeSettings _volumeSettings;
     //private bool _invincible;
     void Start()
     {
@@ -23,9 +29,15 @@ public class PlayerLife : MonoBehaviour
     {
         _currentLife -= Mathf.Abs(Damage);
         UpdateHealthBar();
+
         if (_currentLife <= 0)
         {
             GameOver();
+        }  
+        else
+        {
+            _damageFeedback.PlayFeedbacks();
+            ActivatePostProcessFX();
         }
     }
 
