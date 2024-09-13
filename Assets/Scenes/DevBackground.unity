@@ -6061,7 +6061,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 8921006424738256811, guid: 8dd54b39d929b1f48b55bfc62f1cbe4c, type: 3}
   _player: {fileID: 705264850}
   _waveNumber: 0
-  _enemiesPerWave: 20
+  _enemiesPerWave: 30
   _enemiesPerWaveIncrement: 10
   _timeBetweenWaves: 10
   _timeBetweenEnemies: 0.5
