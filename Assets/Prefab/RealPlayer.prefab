@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 5570027409504750443}
   - component: {fileID: 2204683000982426378}
   - component: {fileID: 6158057163598334862}
+  - component: {fileID: 5525310388400299412}
   m_Layer: 0
   m_Name: RealPlayer
   m_TagString: Player
@@ -444,7 +445,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 5
   _rb: {fileID: 2228604387528886347}
-  playerAnimator: {fileID: 3625234698199969350}
 --- !u!50 &2228604387528886347
 Rigidbody2D:
   serializedVersion: 4
@@ -688,7 +688,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7282406286651958297}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f9154e848bfae5e46a2da5ba719afa7c, type: 2}
   m_CullingMode: 0
