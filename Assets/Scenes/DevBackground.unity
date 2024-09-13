@@ -924,6 +924,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4305765354582964633, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: _maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305765354582964633, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 280230568}
@@ -1056,6 +1060,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7282406286651958297, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1337402008}
+    - targetCorrespondingSourceObject: {fileID: 266081791062618100, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829463801}
   m_SourcePrefab: {fileID: 100100000, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
 --- !u!114 &705264847 stripped
 MonoBehaviour:
@@ -4640,6 +4647,41 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7084408312934058301, guid: e151954fb02b63c408a0ecdc55bd4646, type: 3}
   m_PrefabInstance: {fileID: 1264271810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1829463796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 266081791062618100, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+  m_PrefabInstance: {fileID: 705264846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1829463801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829463796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1001 &1869786857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6019,22 +6061,22 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 8921006424738256811, guid: 8dd54b39d929b1f48b55bfc62f1cbe4c, type: 3}
   _player: {fileID: 705264850}
   _waveNumber: 0
-  _enemiesPerWave: 10
-  _enemiesPerWaveIncrement: 5
-  _timeBetweenWaves: 5
-  _timeBetweenEnemies: 1
-  _enemySize: 1
+  _enemiesPerWave: 20
+  _enemiesPerWaveIncrement: 10
+  _timeBetweenWaves: 10
+  _timeBetweenEnemies: 0.5
+  _enemySize: 0.6
   _randomRange: {x: 15, y: 25}
-  _cooldownBeforeNewWave: 0
-  _cooldownTime: 1
-  _baseHealth: 90
-  _healthPerWave: 10
-  _baseSpeed: 4
-  _speedPerWave: 1
-  _baseDamage: 5
+  _cooldownBeforeNewWave: 1
+  _cooldownTime: 10
+  _baseHealth: 25
+  _healthPerWave: 5
+  _baseSpeed: 3
+  _speedPerWave: 0.4
+  _baseDamage: 1
   _damagePerWave: 1
-  _baseAttackSpeed: 3
-  _attackSpeedPerWave: 0.1
+  _baseAttackSpeed: 2
+  _attackSpeedPerWave: 0.2
   _waveText: {fileID: 631728665}
   _scoreMuktiplier: 1
   _enemies: []
