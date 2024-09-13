@@ -149,6 +149,7 @@ public class Enemy : MonoBehaviour
         {
             _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
             _feedBack.EnemyDeath();
+            _feedBack.OnEnemyPosition(transform.position);
             Destroy(gameObject);    
         }
     }

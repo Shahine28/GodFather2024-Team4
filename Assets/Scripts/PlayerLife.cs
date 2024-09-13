@@ -1,5 +1,6 @@
 
 using MoreMountains.Feedbacks;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -18,7 +19,8 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private WaveManager _waveManager;
     [SerializeField] private TextMeshProUGUI _finalScore;
-    //private bool _invincible;
+    private bool _invincible;
+    [SerializeField] private float _invincibleTime = 0.25f;
     void Start()
     {
         if (_waveManager == null) _waveManager = FindObjectOfType<WaveManager>();
@@ -32,9 +34,10 @@ public class PlayerLife : MonoBehaviour
     }
     public void TakeDamage(float Damage)
     {
+        if (_invincible) return;
         _currentLife -= Mathf.Abs(Damage);
+        _invincible = true;
         UpdateHealthBar();
-
         if (_currentLife <= 0)
         {
             _damageFeedback.StopFeedbacks();
@@ -43,7 +46,15 @@ public class PlayerLife : MonoBehaviour
         else
         {
             _damageFeedback.PlayFeedbacks();
+            StartCoroutine(HitStun());
         }
+
+    }
+
+    IEnumerator HitStun()
+    {
+        yield return new WaitForSeconds(_invincibleTime);
+        _invincible = false;
     }
 
     public void Heal(float Heal)
