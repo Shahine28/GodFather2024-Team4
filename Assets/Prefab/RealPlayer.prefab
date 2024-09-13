@@ -445,6 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 5
   _rb: {fileID: 2228604387528886347}
+  playerAnimator: {fileID: 3625234698199969350}
 --- !u!50 &2228604387528886347
 Rigidbody2D:
   serializedVersion: 4
