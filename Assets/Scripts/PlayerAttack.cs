@@ -27,22 +27,26 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField] private Transform parentObject; // Référence au parent autour duquel tourner
-    [SerializeField] private float _rotationSpeed = 5f; // Vitesse de rotation
-    [SerializeField] private float _rotationRadius = 2f; // Rayon de rotation
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform _playerTransform;
 
+    [Header("Sprite")]
+    [SerializeField] private GameObject _sprite;
 
     private Vector2 lookInput; // Stocke l'input de la souris ou du joystick
 
     private void Start()
     {
         mainCamera = Camera.main;
+        _sprite.SetActive(false);
     }
 
     private void Update()
     {
-        if (_reloadTime < _cooldownTime) _reloadTime += Time.deltaTime;
+        if (_reloadTime < _cooldownTime)
+        {
+            _reloadTime += Time.deltaTime;
+        }
         RotateChildAroundParent();
     }
 
@@ -63,7 +67,8 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Joystick actif");
             direction = lookInput.normalized; // Normaliser l'input du stick pour obtenir la direction
         }
-        else if (_isUsingKeyboard) // Si l'input utiliser est le clavier on utilise la souris.
+        // Si l'input utilise le clavier, on prend en compte la souris
+        else if (_isUsingKeyboard)
         {
             Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             direction = (worldMousePos - parentObject.position).normalized; // Calcul de la direction vers la souris
@@ -73,17 +78,21 @@ public class PlayerAttack : MonoBehaviour
         {
             direction = _playerMovement.PlayerMove.normalized; // Orienter vers la direction du mouvement
         }
-        // Si aucun input ni mouvement
         else
         {
-            direction = Vector2.zero;
+            direction = Vector2.zero; // Aucun input ou mouvement, aucune rotation
         }
+
         // Calcul de l'angle pour orienter l'objet enfant sans changer sa position
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        // Appliquer la rotation à l'enfant pour qu'il pointe dans la bonne direction
-        transform.rotation = rotation;
+        if (direction != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            // Appliquer la rotation à l'enfant sans changer sa position
+            transform.localRotation = rotation; // On garde la position initiale relative au parent
+        }
     }
+
 
 
     public void Attack(InputAction.CallbackContext context)
@@ -91,6 +100,7 @@ public class PlayerAttack : MonoBehaviour
         if (context.performed && _reloadTime >= _cooldownTime)
         {
             Debug.Log("Attack");
+            _sprite.SetActive(true);
             _collidersInContact.Clear();
             _coll.OverlapCollider(_contactFilter, _collidersInContact);
             foreach (var collider in _collidersInContact)
@@ -101,12 +111,29 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
             _reloadTime = 0;
+            StartCoroutine(enumerator());
         }
+        else if (context.canceled && _sprite.activeInHierarchy)
+        {
+            _sprite.SetActive(false);
+        }
+    }
+    
+    IEnumerator enumerator()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (_sprite.activeInHierarchy)
+        {
+            _sprite.SetActive(false);
+        }
+
     }
 
     public void SetDamage(float damage)
     {
         _damage = damage;
     }
+
+
    
 }

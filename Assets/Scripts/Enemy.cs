@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Feedbacks")]
     [SerializeField] private MMF_Player _recoilFeedback;
+    [SerializeField] private FeedBack _feedBack;
 
     public Animator enemyAnimator;
 
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
         if (_waveManager == null) _waveManager = GameObject.FindObjectOfType<WaveManager>();
         if (_healthBar == null) _healthBar = GetComponentInChildren<Slider>();
         if (_canvas == null) _canvas = GetComponentInChildren<Canvas>();
+        _feedBack = FindObjectOfType<FeedBack>();
 
     }
 
@@ -149,6 +151,7 @@ public class Enemy : MonoBehaviour
         else
         {
             _waveManager.StartCoroutine(_waveManager.RemoveEnemy(gameObject));
+            _feedBack.EnemyDeath();
             Destroy(gameObject);    
         }
     }
