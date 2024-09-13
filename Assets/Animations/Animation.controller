@@ -168,6 +168,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: VerticalMove
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: verticalStronger
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6915223240356114389}
   m_Solo: 0
@@ -220,6 +223,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: horisontalMove
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: verticalStronger
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1164907076236587952}
   m_Solo: 0
@@ -251,6 +257,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: VerticalMove
     m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: verticalStronger
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -337,7 +349,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 540, y: -60, z: 0}
   m_EntryPosition: {x: 330, y: 70, z: 0}
-  m_ExitPosition: {x: 750, y: 70, z: 0}
+  m_ExitPosition: {x: 930, y: 150, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2654656188280101137}
 --- !u!1102 &2654656188280101137
@@ -376,6 +388,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: VerticalMove
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: verticalStronger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6277409344971048568}
@@ -478,6 +493,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: horisontalMove
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: verticalStronger
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1776465322151036664}

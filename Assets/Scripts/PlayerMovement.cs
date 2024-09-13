@@ -1,6 +1,6 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,9 +36,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateMoveSpeed();
-
+    
         playerAnimator.SetInteger("horisontalMove", _move.x == 0 ? 0 : _move.x > 0 ? 1 : -1);
         playerAnimator.SetInteger("VerticalMove", _move.y == 0 ? 0 : _move.y > 0 ? 1 : -1);
+        playerAnimator.SetBool("verticalStronger", Mathf.Abs(_rb.velocity.x) < Mathf.Abs(_rb.velocity.y));
         //if (_move.x > 0) { playerAnimator.SetBool("flip", true); }
         //if (_move.x < 0) { playerAnimator.SetBool("flip", false); }
     }
