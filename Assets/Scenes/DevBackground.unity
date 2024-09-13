@@ -1983,6 +1983,14 @@ PrefabInstance:
       propertyPath: managedReferences[956850257422188569].RangeFalloff.m_Curve.Array.data[1].weightedMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4723340895592201177, guid: 2e29c67cede9f814f8765737ee77a87f, type: 3}
+      propertyPath: managedReferences[3724296851078250500].MaxLevel
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723340895592201177, guid: 2e29c67cede9f814f8765737ee77a87f, type: 3}
+      propertyPath: managedReferences[3724296851078250500].MinLevel
+      value: 0.83
+      objectReference: {fileID: 0}
     - target: {fileID: 4723823475890593518, guid: 2e29c67cede9f814f8765737ee77a87f, type: 3}
       propertyPath: FeedbacksList.Array.size
       value: 2
@@ -6259,7 +6267,7 @@ MonoBehaviour:
   _player: {fileID: 705264850}
   _waveNumber: 0
   _enemiesPerWave: 30
-  _enemiesPerWaveIncrement: 10
+  _enemiesPerWaveIncrement: 5
   _timeBetweenWaves: 10
   _timeBetweenEnemies: 0.5
   _enemySize: 0.6
@@ -6269,11 +6277,11 @@ MonoBehaviour:
   _baseHealth: 25
   _healthPerWave: 5
   _baseSpeed: 3
-  _speedPerWave: 0.4
+  _speedPerWave: 0.1
   _baseDamage: 1
   _damagePerWave: 1
   _baseAttackSpeed: 2
-  _attackSpeedPerWave: 0.2
+  _attackSpeedPerWave: 0
   _waveText: {fileID: 631728665}
   _scoreMuktiplier: 1
   _enemies: []
