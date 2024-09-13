@@ -42,6 +42,7 @@ public class WaveManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI _waveText;
     private int _catsKilled = 0;
+    public TextMeshProUGUI WaveText => _waveText;
     [SerializeField] private int _scoreMuktiplier = 1;
 
     [SerializeField] private List<GameObject> _enemies = new List<GameObject>();
