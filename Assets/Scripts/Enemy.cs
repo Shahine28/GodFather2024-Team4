@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private MMF_Player _recoilFeedback;
     [SerializeField] private FeedBack _feedBack;
 
+    public Animator enemyAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +118,20 @@ public class Enemy : MonoBehaviour
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 _rb.velocity = direction * _speed;
                 if (_isInAttackRange) _isInAttackRange = false;
+
+                // animation here
+                float xMove = direction.x;
+                float yMove = direction.y;
+
+                if (Mathf.Abs(xMove) > Mathf.Abs(yMove))
+                {
+                    enemyAnimator.SetInteger("horisontalMove", xMove > 0 ? 1 : -1);
+                    enemyAnimator.SetInteger("verticalMove", 0);
+                } else
+                {
+                    enemyAnimator.SetInteger("verticalMove", yMove > 0 ? 1 : -1);
+                    enemyAnimator.SetInteger("horisontalMove", 0);
+                }
             }
             else
             {
