@@ -262,4 +262,10 @@ public class HappeningManager : MonoBehaviour
         Debug.Log("Vision off");
     }
     #endregion
+
+    private void OnApplicationQuit()
+    {
+        _visionProfile.TryGet(out Vignette vignette);
+        vignette.active = false;
+    }
 }
