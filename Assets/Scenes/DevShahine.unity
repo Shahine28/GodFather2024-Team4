@@ -2217,6 +2217,14 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 705264849}
+    - target: {fileID: 1027845812797794980, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027845812797794980, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
+      propertyPath: m_Profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 087a38bd8f76c00478edc8c016c69b59, type: 2}
     - target: {fileID: 2204683000982426378, guid: f642fb5ce17c5c14c9904440b74eb0ad, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2493,7 +2501,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2777,6 +2785,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _visionDuration: 10
+  _visionProfile: {fileID: 11400000, guid: 087a38bd8f76c00478edc8c016c69b59, type: 2}
   _visionOnEvent:
     m_PersistentCalls:
       m_Calls: []

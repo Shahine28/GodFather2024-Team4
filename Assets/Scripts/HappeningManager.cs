@@ -1,3 +1,5 @@
+using Cinemachine.PostFX;
+using Cinemachine.PostFX.Editor;
 using NaughtyAttributes;
 using System;
 using System.Collections;
@@ -6,6 +8,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class HappeningManager : MonoBehaviour
 {
@@ -42,6 +46,7 @@ public class HappeningManager : MonoBehaviour
 
     [SerializeField, Foldout("Vision")] private float _visionDuration = 10f;
     private bool _isVision = false;
+    [SerializeField, Foldout("Vision")] private VolumeProfile _visionProfile;
     [SerializeField, Foldout("Vision")] private UnityEvent _visionOnEvent;
     [SerializeField, Foldout("Vision")] private UnityEvent _visionOffEvent;
 
@@ -65,7 +70,8 @@ public class HappeningManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _visionProfile.TryGet(out Vignette vignette);
+        vignette.active = false;
     }
 
     // Update is called once per frame
@@ -150,6 +156,7 @@ public class HappeningManager : MonoBehaviour
 
     private void MultiplierOff()
     {
+        StopCoroutine(Multiplier());
         _multiplierOffEvent?.Invoke();
         _isMultiplier = false;
         Debug.Log("Score Multiplier back to normal");
@@ -184,6 +191,7 @@ public class HappeningManager : MonoBehaviour
 
     private void StatsOff()
     {
+        StopCoroutine(Stats());
         _statsNerfOffEvent?.Invoke();
         _isStatsNerf = false;
         _playerMovement.SetMaxSpeed(_maxSpeedNerf);
@@ -216,6 +224,7 @@ public class HappeningManager : MonoBehaviour
 
     private void BindingOff()
     {
+        StopCoroutine(Binding());
         _reverseBindingOffEvent?.Invoke();
         _isReverseBinding = false;
         Debug.Log("Binding back to normal");
@@ -234,16 +243,21 @@ public class HappeningManager : MonoBehaviour
     }
     private IEnumerator Vision()
     {
+        _visionProfile.TryGet(out Vignette vignette);
+        vignette.active = true;
         _isVision = true;
         Debug.Log("Vision");
         _visionOnEvent?.Invoke();
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(_visionDuration);
         if (_isVision) VisionOff();
     }
 
     private void VisionOff()
     {
-       _isVision = false;
+        StopCoroutine(Vision());
+        _visionProfile.TryGet(out Vignette vignette);
+        vignette.active = false;
+        _isVision = false;
         _visionOffEvent?.Invoke();
         Debug.Log("Vision off");
     }
