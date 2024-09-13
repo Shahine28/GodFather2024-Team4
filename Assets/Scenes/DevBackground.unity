@@ -6346,21 +6346,21 @@ MonoBehaviour:
   _player: {fileID: 705264850}
   _waveNumber: 0
   _enemiesPerWave: 30
-  _enemiesPerWaveIncrement: 10
-  _timeBetweenWaves: 10
-  _timeBetweenEnemies: 0.5
+  _enemiesPerWaveIncrement: 7
+  _timeBetweenWaves: 13
+  _timeBetweenEnemies: 0.75
   _enemySize: 0.6
   _randomRange: {x: 15, y: 25}
   _cooldownBeforeNewWave: 1
-  _cooldownTime: 10
+  _cooldownTime: 13
   _baseHealth: 25
-  _healthPerWave: 5
-  _baseSpeed: 3
-  _speedPerWave: 0.4
+  _healthPerWave: 4
+  _baseSpeed: 2.5
+  _speedPerWave: 0.25
   _baseDamage: 1
   _damagePerWave: 1
-  _baseAttackSpeed: 2
-  _attackSpeedPerWave: 0.2
+  _baseAttackSpeed: 1
+  _attackSpeedPerWave: 0.1
   _waveText: {fileID: 631728665}
   _scoreMuktiplier: 1
   _enemies: []
