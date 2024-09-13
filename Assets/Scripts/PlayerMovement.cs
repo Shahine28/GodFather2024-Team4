@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _playerMovement;
     public Vector2 PlayerMove => _playerMovement;
 
+    public Animator playerAnimator;
+
 
     public void UpdateMoveDirection(InputAction.CallbackContext context)
     {
@@ -36,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateMoveSpeed();
+
+        playerAnimator.SetInteger("horisontalMove", _move.x == 0 ? 0 : _move.x > 0 ? 1 : -1);
+        playerAnimator.SetInteger("VerticalMove", _move.y == 0 ? 0 : _move.y > 0 ? 1 : -1);
+        if (_move.x > 0) { playerAnimator.SetBool("flip", true); }
+        if (_move.x < 0) { playerAnimator.SetBool("flip", false); }
     }
 
     public void SetMaxSpeed(float maxSpeed)
